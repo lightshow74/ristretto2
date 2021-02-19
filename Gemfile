@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc5'
+gem 'rails', '3.1.0.rc6'
 gem 'rake', '0.9.2'
 
 # Bundle edge Rails instead:
@@ -23,8 +23,10 @@ gem 'jquery-rails'
 gem 'simple_form'
 gem 'devise'
 gem 'devise_invitable'
-gem 'friendly_id', ">= 3.3.0.rc2"
+gem 'friendly_id', "3.3.0.rc2"
 gem 'cancan'
+gem 'has_scope'
+gem 'inherited_resources'
 
 group :development, :test do
   gem 'factory_girl_rails'

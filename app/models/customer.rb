@@ -15,6 +15,8 @@ class Customer < ActiveRecord::Base
 
   delegate :postal_address, :physical_address, :phones, :to => :default_unit
 
+  default_scope { includes({:default_unit => :phones}, :slug) }
+
   def name
     default_unit.try(:name) || units.first.name
   end
@@ -24,11 +26,15 @@ class Customer < ActiveRecord::Base
   end
 
   def users_for_select
-    User.all.collect {|u| [u.email, u.id]}
+    User.all.collect {|u| [u, u.id]}
   end
 
   def to_s
     name
+  end
+
+  def as_json(options = {})
+    super(:methods => [:name, :postal_address, :physical_address, :phones])
   end
 
   protected
